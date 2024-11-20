@@ -1,5 +1,4 @@
 from database import add_entry
-from ui import display_entries
 import sys
 type = sys.argv[0]
 title = sys.argv[1]
