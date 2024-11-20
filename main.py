@@ -1,26 +1,14 @@
-import click
 from database import add_entry
 from ui import display_entries
+import sys
+type = sys.argv[0]
+title = sys.argv[1]
+link = sys.argv[2]
+tags = sys.argv[3]
 
-@click.group()
-def cli():
-    pass
+tag_list = [tag.strip() for tag in tags.split(",")]
+add_entry(type, title, link, tag_list)
+print(f"Added {type} entry with link: {link} and tags: {tags}")
 
-@cli.command()
-@click.argument("type")
-@click.argument("title")
-@click.argument("link")
-@click.argument("tags")
-def add(type, title, link, tags):
-    # Extract a placeholder title from the link if the type is YouTube, or use a generic title
-    tag_list = [tag.strip() for tag in tags.split(",")]
-    add_entry(type, title, link, tag_list)
-    click.echo(f"Added {type} entry with link: {link} and tags: {tags}")
 
-@cli.command()
-def view():
-    display_entries()
-
-if __name__ == '__main__':
-    cli()
 
