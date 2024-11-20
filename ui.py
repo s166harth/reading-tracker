@@ -29,3 +29,5 @@ def display_entries():
     
     console.print(table)
 
+if "__name__"=="__main__":
+   display_entries() 
